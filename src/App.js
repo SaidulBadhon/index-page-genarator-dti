@@ -1,5 +1,7 @@
 import {
   Box,
+  Fade,
+  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -8,7 +10,8 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
 const data = [
   {
@@ -103,6 +106,11 @@ const data = [
 //   },
 // ];
 export default function App() {
+  const [items, setItems] = useState(data);
+
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+
   const styles = {
     border: {
       border: "1px #8eaadb solid",
@@ -112,6 +120,18 @@ export default function App() {
     },
   };
 
+  console.log(items);
+
+  const [showDeleteButton, setShowDeleteButton] = useState(false);
+
+  const handleAddItem = () => {
+    const newItem = {
+      id: items.length + 1,
+      name: name,
+      date: date,
+    };
+    setItems([...items, newItem]);
+  };
   return (
     <Box
       sx={{
@@ -181,7 +201,7 @@ export default function App() {
               </TableHead>
 
               <TableBody>
-                {data.map((row) => (
+                {items.map((row, index) => (
                   <TableRow
                     key={row.name}
                     sx={{
@@ -195,12 +215,30 @@ export default function App() {
                     }}
                   >
                     <TableCell
-                      sx={{ ...styles.border, height: 60 }}
+                      sx={{
+                        ...styles.border,
+                        height: 60,
+                        p: 0,
+                      }}
                       component="th"
                       scope="row"
                       align="center"
+                      onMouseEnter={() => setShowDeleteButton(true)}
+                      onMouseLeave={() => setShowDeleteButton(false)}
                     >
-                      {row.id}
+                      <span>{index + 1}</span>
+
+                      <Fade in={showDeleteButton} mountOnEnter unmountOnExit>
+                        <IconButton
+                          onClick={() =>
+                            setItems((e) =>
+                              e.filter((item) => item.id !== row.id)
+                            )
+                          }
+                        >
+                          <DeleteRoundedIcon sx={{ fill: "red" }} />
+                        </IconButton>
+                      </Fade>
                     </TableCell>
                     <TableCell sx={styles.border} component="th" scope="row">
                       {row.name}
@@ -213,11 +251,23 @@ export default function App() {
               </TableBody>
             </Table>
           </TableContainer>
-        </Box>
-      </Box>
 
-      <Box>
-        <input type="text" value={name} onChange={(e) => setName()} />
+          <Box className="no-print">
+            Name:
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            Date:
+            <input
+              type="text"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+            <button onClick={() => handleAddItem()}>Submit</button>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

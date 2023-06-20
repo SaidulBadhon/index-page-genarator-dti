@@ -136,3 +136,10 @@ button {
     transition: all 1s ease;
   }
 }
+
+@media print {
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+}
