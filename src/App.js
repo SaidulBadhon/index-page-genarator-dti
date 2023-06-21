@@ -13,98 +13,8 @@ import {
 import React, { useState } from "react";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
-const data = [
-  {
-    id: 1,
-    name: "Perform the task to install windows desktop operating system",
-    date: "07-05-2023",
-  },
-  {
-    id: 2,
-    name: "Perform the task to install VMWare and Create Virtual Machines",
-    date: "18-05-2023",
-  },
-  {
-    id: 3,
-    name: "Perform the task to install linux operating system",
-    date: "25-05-2023",
-  },
-];
-// const data = [
-//   {
-//     id: 1,
-//     name: "Simple circuit design",
-//     date: "23-05-2023",
-//   },
-//   {
-//     id: 2,
-//     name: "Measuring the current in a LED circuit",
-//     date: "30-05-2023",
-//   },
-//   {
-//     id: 3,
-//     name: "AC circuit design",
-//     date: "06-06-2023",
-//   },
-//   {
-//     id: 4,
-//     name: "Binary presentation of hexadecimal number using LED",
-//     date: "13-06-2023",
-//   },
-// ];
+const data = [];
 
-// // JAVA
-// const data = [
-//   {
-//     id: 1,
-//     name: "Create a java program using method",
-//     date: "11-04-2023",
-//   },
-//   {
-//     id: 2,
-//     name: "Create a java program using method overloading",
-//     date: "18-04-2023",
-//   },
-//   {
-//     id: 3,
-//     name: "Create a java program using copy constructor method",
-//     date: "25-04-2023",
-//   },
-//   {
-//     id: 4,
-//     name: "Single inheriting in java program",
-//     date: "02-05-2023",
-//   },
-//   {
-//     id: 5,
-//     name: "Multi level inheriting in java program",
-//     date: "09-05-2023",
-//   },
-// ];
-
-// SSSS
-// const data = [
-//   {
-//     id: 1,
-//     name: "Analize Client Requirements, prepare system diagram, Quotation and get approval from client.",
-//     date: "11-04-2023",
-//   },
-//   {
-//     id: 2,
-//     name: "Perform power and network cable wiring.",
-//     date: "18-04-2023",
-//   },
-//   {
-//     id: 3,
-//     name: "Install and Configure the CCTV Camera.",
-//     date: "25-04-2023",
-//   },
-//   {
-//     id: 4,
-//     name: "Install and Configure DVR/NVR machine",
-//     date: "02-05-2023",
-//   },
-// ];
 export default function App() {
   const [items, setItems] = useState(data);
 
@@ -252,7 +162,7 @@ export default function App() {
             </Table>
           </TableContainer>
 
-          <Box className="no-print">
+          <Box className="no-print input-styling">
             Name:
             <input
               type="text"
