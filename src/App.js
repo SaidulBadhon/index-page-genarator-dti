@@ -252,7 +252,7 @@ export default function App() {
             </Table>
           </TableContainer>
 
-          <Box className="no-print">
+          <Box className="no-print input-styling">
             Name:
             <input
               type="text"
